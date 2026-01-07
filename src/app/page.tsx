@@ -1,7 +1,7 @@
 ﻿import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BrandManifesto from "@/components/sections/BrandManifesto";
-import HomeHero from "@/components/sections/HomeHero";
+import HeroAlkimia from "@/components/sections/HeroAlkimia";
 import IntroSplit from "@/components/sections/IntroSplit";
 import PortfolioPreview from "@/components/sections/PortfolioPreview";
 import StatsStrip from "@/components/sections/StatsStrip";
@@ -11,7 +11,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#0f0f0f] text-[#f8f8f8]">
       <Header active="inicio" />
       <main>
-        <HomeHero />
+        <HeroAlkimia />
         <IntroSplit />
         <StatsStrip />
         <PortfolioPreview />
