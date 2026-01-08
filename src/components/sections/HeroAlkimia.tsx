@@ -8,7 +8,7 @@ import Container from "@/components/ui/Container";
 
 const MotionLink = motion(Link);
 
-const easeOut = [0.16, 1, 0.3, 1];
+const easeOut = "easeOut";
 
 function useParallax(
   x: ReturnType<typeof useSpring>,

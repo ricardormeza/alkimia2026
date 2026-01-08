@@ -57,23 +57,6 @@ const portfolioItems = [
 ];
 
 export default function Page() {
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    show: (index: number) => {
-      const col = index % 3;
-      const row = Math.floor(index / 3);
-      return {
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 0.45,
-          ease: [0.22, 1, 0.36, 1],
-          delay: row * 0.08 + col * 0.06,
-        },
-      };
-    },
-  };
-
   return (
     <div className="min-h-screen bg-white text-[#111]">
       <Header active="portafolio" variant="light" />
@@ -85,12 +68,11 @@ export default function Page() {
                 Portafolio
               </h1>
             </div>
-            <motion.div
-              initial="hidden"
-              animate="show"
-              className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-            >
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {portfolioItems.map((item, index) => {
+                const col = index % 3;
+                const row = Math.floor(index / 3);
+                const delay = row * 0.08 + col * 0.06;
                 const content = (
                   <>
                     <Image
@@ -112,8 +94,10 @@ export default function Page() {
                   <motion.div
                     key={`${item.src}-${index}`}
                     className="group relative aspect-square overflow-hidden rounded-2xl border border-black/10"
-                    variants={itemVariants}
-                    custom={index}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.45, delay }}
                   >
                     {item.href ? (
                       <Link
@@ -129,7 +113,7 @@ export default function Page() {
                   </motion.div>
                 );
               })}
-            </motion.div>
+            </div>
           </Container>
         </Section>
       </main>

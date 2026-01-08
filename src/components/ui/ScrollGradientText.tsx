@@ -18,7 +18,7 @@ export default function ScrollGradientText({
 }: ScrollGradientTextProps) {
   const ref = useRef<HTMLParagraphElement | null>(null);
   const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset });
+  const { scrollYProgress } = useScroll({ target: ref, offset: offset as never });
   const clipPath = useTransform(
     scrollYProgress,
     [0, 1],
