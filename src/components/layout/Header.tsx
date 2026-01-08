@@ -107,7 +107,7 @@ export default function Header({ active = "inicio" }: HeaderProps) {
           </nav>
           <Link
             href="/"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-semibold tracking-wide text-white"
+            className="text-lg font-semibold tracking-wide text-white md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
             aria-label="Alkimia"
           >
             <Image
@@ -141,8 +141,10 @@ export default function Header({ active = "inicio" }: HeaderProps) {
             </button>
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/80 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2562f4]"
-              aria-label="Abrir panel"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/80 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2562f4] md:hidden"
+              aria-label="Abrir menu"
+              aria-expanded={isOpen}
+              onClick={() => setIsOpen((prev) => !prev)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -160,26 +162,6 @@ export default function Header({ active = "inicio" }: HeaderProps) {
                 <rect width="7" height="7" x="14" y="3" rx="1" />
                 <rect width="7" height="7" x="14" y="14" rx="1" />
                 <rect width="7" height="7" x="3" y="14" rx="1" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/80 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2562f4] md:hidden"
-              aria-label="Abrir menú"
-              aria-expanded={isOpen}
-              onClick={() => setIsOpen((prev) => !prev)}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M3 6h18M3 12h18M3 18h18" />
               </svg>
             </button>
           </div>

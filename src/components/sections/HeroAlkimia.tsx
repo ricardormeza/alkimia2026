@@ -54,7 +54,7 @@ export default function HeroAlkimia() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: easeOut }}
-          className="mb-6 text-center sm:mb-8 lg:mb-10"
+          className="mb-3 text-center sm:mb-8 lg:mb-10"
         >
           <h2 className="text-5xl font-semibold leading-tight sm:text-4xl lg:text-5xl text-white transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-yellow-300 hover:via-white hover:to-blue-400">
             <span className="block">Una aleación que logra</span>
