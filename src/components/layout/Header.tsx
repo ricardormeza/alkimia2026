@@ -6,6 +6,7 @@ import { useState } from "react";
 
 type HeaderProps = {
   active?: "inicio" | "nosotros" | "servicios" | "portafolio" | "contacto";
+  variant?: "dark" | "light";
 };
 
 const navItems = [
@@ -17,25 +18,50 @@ const navItems = [
 
 const serviceItems = [
   { href: "/branding", label: "Branding" },
-  { href: "/servicio-de-diseno-grafico", label: "Diseño Gráfico" },
-  { href: "/diseno-de-paginas-web", label: "Páginas Web" },
+  { href: "/servicio-de-diseno-grafico", label: "Dise\u00f1o Gr\u00e1fico" },
+  { href: "/diseno-de-paginas-web", label: "P\u00e1ginas Web" },
   { href: "/marketing-digital", label: "Marketing Digital" },
-  { href: "/contacto", label: "Solicitar una cotización" },
+  { href: "/contacto", label: "Solicitar una cotizaci\u00f3n" },
 ];
 
-export default function Header({ active = "inicio" }: HeaderProps) {
+export default function Header({ active = "inicio", variant = "dark" }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const isLight = variant === "light";
+
+  const borderColor = isLight ? "border-black/10" : "border-white/10";
+  const navText = isLight ? "text-black/70" : "text-white/80";
+  const navActive = isLight ? "text-black" : "text-white";
+  const navAfter = isLight ? "after:bg-black/80" : "after:bg-white";
+  const dropdownBg = isLight ? "bg-white" : "bg-[#0f0f0f]";
+  const dropdownBorder = isLight ? "border-black/10" : "border-white/10";
+  const dropdownText = isLight ? "text-black/70" : "text-white/80";
+  const dropdownHover = isLight
+    ? "hover:bg-black/5 hover:text-black"
+    : "hover:bg-white/5 hover:text-white";
+  const iconBorder = isLight ? "border-black/10" : "border-white/10";
+  const iconText = isLight
+    ? "text-black/70 hover:text-black"
+    : "text-white/80 hover:text-white";
+  const mobileBg = isLight ? "bg-white" : "bg-[#0f0f0f]";
+  const mobileText = isLight ? "text-black/70" : "text-white/80";
+  const mobileActive = isLight ? "text-black" : "text-white";
+  const logoSrc = isLight
+    ? "/images/alkimia-logo.webp"
+    : "/images/Alkimia-logo-blanco.webp";
+
+  const navBase =
+    "relative border-b-2 pb-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-200 hover:after:scale-x-100";
 
   return (
-    <header className="border-b border-white/10">
+    <header className={`border-b ${borderColor}`}>
       <div className="relative">
         <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between px-4 py-5 sm:px-6 lg:px-10">
-          <nav className="hidden items-center gap-6 text-sm text-white/80 md:flex">
+          <nav className={`hidden items-center gap-6 text-sm md:flex ${navText}`}>
             <Link
               href="/"
-              className={`relative border-b-2 pb-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-200 hover:after:scale-x-100 ${
+              className={`${navBase} ${navAfter} ${navText} ${
                 active === "inicio"
-                  ? "border-[#2562f4] text-white"
+                  ? `border-[#2562f4] ${navActive}`
                   : "border-transparent hover:text-[#2562f4]"
               }`}
               aria-current={active === "inicio" ? "page" : undefined}
@@ -44,9 +70,9 @@ export default function Header({ active = "inicio" }: HeaderProps) {
             </Link>
             <Link
               href="/nosotros"
-              className={`relative border-b-2 pb-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-200 hover:after:scale-x-100 ${
+              className={`${navBase} ${navAfter} ${navText} ${
                 active === "nosotros"
-                  ? "border-[#2562f4] text-white"
+                  ? `border-[#2562f4] ${navActive}`
                   : "border-transparent hover:text-[#2562f4]"
               }`}
               aria-current={active === "nosotros" ? "page" : undefined}
@@ -56,9 +82,9 @@ export default function Header({ active = "inicio" }: HeaderProps) {
             <div className="relative group">
               <button
                 type="button"
-                className={`relative border-b-2 pb-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-200 group-hover:after:scale-x-100 ${
+                className={`${navBase} ${navAfter} ${navText} ${
                   active === "servicios"
-                    ? "border-[#2562f4] text-white"
+                    ? `border-[#2562f4] ${navActive}`
                     : "border-transparent hover:text-[#2562f4]"
                 }`}
                 aria-haspopup="true"
@@ -67,13 +93,13 @@ export default function Header({ active = "inicio" }: HeaderProps) {
                 Servicios
               </button>
               <div className="pointer-events-none absolute left-0 top-full z-20 w-56 pt-3 opacity-0 transition-opacity duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
-                <div className="rounded-2xl border border-white/10 bg-[#0f0f0f] p-3 shadow-lg">
-                  <div className="flex flex-col gap-2 text-sm text-white/80">
+                <div className={`rounded-2xl border p-3 shadow-lg ${dropdownBorder} ${dropdownBg}`}>
+                  <div className={`flex flex-col gap-2 text-sm ${dropdownText}`}>
                     {serviceItems.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-white/5 hover:text-white"
+                        className={`rounded-lg px-3 py-2 transition-colors duration-200 ${dropdownHover}`}
                       >
                         {item.label}
                       </Link>
@@ -84,9 +110,9 @@ export default function Header({ active = "inicio" }: HeaderProps) {
             </div>
             <Link
               href="/portafolio"
-              className={`relative border-b-2 pb-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-200 hover:after:scale-x-100 ${
+              className={`${navBase} ${navAfter} ${navText} ${
                 active === "portafolio"
-                  ? "border-[#2562f4] text-white"
+                  ? `border-[#2562f4] ${navActive}`
                   : "border-transparent hover:text-[#2562f4]"
               }`}
               aria-current={active === "portafolio" ? "page" : undefined}
@@ -95,9 +121,9 @@ export default function Header({ active = "inicio" }: HeaderProps) {
             </Link>
             <Link
               href="/contacto"
-              className={`relative border-b-2 pb-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-200 hover:after:scale-x-100 ${
+              className={`${navBase} ${navAfter} ${navText} ${
                 active === "contacto"
-                  ? "border-[#2562f4] text-white"
+                  ? `border-[#2562f4] ${navActive}`
                   : "border-transparent hover:text-[#2562f4]"
               }`}
               aria-current={active === "contacto" ? "page" : undefined}
@@ -107,11 +133,13 @@ export default function Header({ active = "inicio" }: HeaderProps) {
           </nav>
           <Link
             href="/"
-            className="text-lg font-semibold tracking-wide text-white md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
+            className={`text-lg font-semibold tracking-wide ${
+              isLight ? "text-black" : "text-white"
+            } md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2`}
             aria-label="Alkimia"
           >
             <Image
-              src="/images/Alkimia-logo-blanco.webp"
+              src={logoSrc}
               width={120}
               height={32}
               alt="Alkimia"
@@ -122,7 +150,7 @@ export default function Header({ active = "inicio" }: HeaderProps) {
           <div className="flex items-center gap-4">
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/80 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2562f4]"
+              className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2562f4] ${iconBorder} ${iconText}`}
               aria-label="Buscar"
             >
               <svg
@@ -141,7 +169,7 @@ export default function Header({ active = "inicio" }: HeaderProps) {
             </button>
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/80 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2562f4] md:hidden"
+              className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2562f4] md:hidden ${iconBorder} ${iconText}`}
               aria-label="Abrir menu"
               aria-expanded={isOpen}
               onClick={() => setIsOpen((prev) => !prev)}
@@ -167,8 +195,10 @@ export default function Header({ active = "inicio" }: HeaderProps) {
           </div>
         </div>
         {isOpen ? (
-          <div className="border-t border-white/10 bg-[#0f0f0f] md:hidden">
-            <nav className="mx-auto flex w-full max-w-[1200px] flex-col gap-4 px-4 py-6 text-sm text-white/80 sm:px-6">
+          <div className={`border-t md:hidden ${borderColor} ${mobileBg}`}>
+            <nav
+              className={`mx-auto flex w-full max-w-[1200px] flex-col gap-4 px-4 py-6 text-sm sm:px-6 ${mobileText}`}
+            >
               {navItems.map((item) => {
                 const isActive = item.key === active;
                 return (
@@ -176,7 +206,9 @@ export default function Header({ active = "inicio" }: HeaderProps) {
                     key={item.key}
                     href={item.href}
                     className={`text-base transition-colors duration-200 ${
-                      isActive ? "text-white" : "hover:text-[#2562f4]"
+                      isActive
+                        ? mobileActive
+                        : "hover:text-[#2562f4]"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >
@@ -185,7 +217,9 @@ export default function Header({ active = "inicio" }: HeaderProps) {
                 );
               })}
               <div className="space-y-2 pt-2">
-                <p className="text-xs uppercase tracking-[0.2em] text-white/50">
+                <p className={`text-xs uppercase tracking-[0.2em] ${
+                  isLight ? "text-black/40" : "text-white/50"
+                }`}>
                   Servicios
                 </p>
                 {serviceItems.map((item) => (
