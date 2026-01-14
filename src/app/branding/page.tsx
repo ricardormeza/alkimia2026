@@ -37,7 +37,7 @@ export default function Page() {
                   alineamos estrategia y dise\u00f1o para que tu negocio destaque.
                 </p>
                 <button className="mt-6 inline-flex items-center rounded-full bg-[#2562f4] px-6 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#1f53cf]">
-                  Solicitar cotizaci\u00f3n
+                  Solicitar cotización
                 </button>
               </div>
               <div className="relative overflow-hidden rounded-2xl border border-black/10 bg-[#111]">

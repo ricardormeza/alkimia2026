@@ -8,23 +8,38 @@ import Section from "@/components/ui/Section";
 const tabs = [
   {
     key: "branding",
-    label: "Branding",
+    label: "Sin Ley",
     src: "/portafolio/alkimia-publicidad-branding-sinley-img6.webp",
   },
   {
     key: "diseno-web",
-    label: "Dise\u00f1o Web",
+    label: "JBLAS Asesores",
     src: "/portafolio/web-mock-jblas-scaled.webp",
   },
   {
     key: "marketing-digital",
-    label: "Marketing Digital",
+    label: "Acento Cafe",
     src: "/portafolio/alkimia-diseno-de-empaque-acento-cafeteria.webp",
   },
   {
     key: "diseno-grafico",
-    label: "Dise\u00f1o Gr\u00e1fico",
+    label: "Muñoz Realty Group",
     src: "/portafolio/alkimia-agency-munoz-realty-portafolio-diseno-imagen-corporativa.webp",
+  },
+  {
+    key: "diseno-grafico2",
+    label: "AmmetBaja",
+    src: "/portafolio/ametbaja/alkimia-marketing-redes-sociales-amet-2-scaled.webp",
+  },
+  {
+    key: "cosmos",
+    label: "Cosmo Sophia",
+    src: "/portafolio/cosmo-sophia/alkimia-publicidad-proyecto-sophia-grupo-cosmopolitan-valla-perimetral-1.webp",
+  },
+  {
+    key: "valkas",
+    label: "Grupo Valcas",
+    src: "/portafolio/grupo-valcas/alkimia-marketing-grupo-valcas-cobroplan1.webp",
   },
 ];
 
@@ -34,6 +49,11 @@ export default function PortafolioDos() {
 
   return (
     <Section>
+      <div className="text-center mb-8">
+          <h2 className="text-2xl font-semibold text-white sm:text-3xl">
+            Portafolio
+          </h2>
+        </div>
       <div className="relative overflow-hidden bg-[#0b0b0b]">
         <div className="relative h-[90vh] w-full">
           <Image
@@ -45,6 +65,7 @@ export default function PortafolioDos() {
             sizes="100vw"
             priority
           />
+            
           <div className="absolute inset-0 flex items-center">
             <Container className="flex w-full justify-center">
               <div className="flex w-full flex-col gap-3 text-center sm:text-right lg:ml-auto lg:w-auto lg:items-end">
@@ -74,6 +95,11 @@ export default function PortafolioDos() {
               </div>
             </Container>
           </div>
+        </div>
+        <div className="text-center mb-4">
+          <button className="mt-6 inline-flex items-center rounded-full bg-[#2562f4] px-6 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#1f53cf]">
+                  Más Proyectos
+          </button>
         </div>
       </div>
     </Section>

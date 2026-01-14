@@ -55,14 +55,14 @@ export default function Page() {
                   Somos una agencia de branding y marketing digital ubicada
                   orgullosamente en la esquina de México, Tijuana B.C.
                 </h1>
-                <p className="mt-4 max-w-xl text-sm leading-relaxed text-black/70">
+                <p className="mt-4 max-w-xl text-xl leading-relaxed text-black/70">
                   Con pasión, creatividad y empeño, diseñamos proyectos
                   únicos en branding, páginas web y redes sociales, adaptados a
                   las necesidades para hacer realidad tu visión.
                 </p>
               </div>
-              <div className="relative mx-auto h-[320px] w-full max-w-[520px]">
-                <div className="absolute right-0 top-0 h-[240px] w-[240px] overflow-hidden rounded-2xl bg-[#4db6e5]">
+              <div className="relative mx-auto h-[300px] w-full max-w-[20px] sm:h-[340px] md:h-[400px] md:max-w-[620px]">
+                <div className="absolute right-0 top-0 h-[220px] w-[260px] overflow-hidden rounded-[28px] bg-[#4db6e5] shadow-[0_24px_40px_rgba(0,0,0,0.18)] sm:h-[260px] sm:w-[300px] md:h-[340px] md:w-[380px]">
                   <Image
                     src="/portafolio/web-mock-jblas-scaled.webp"
                     alt="Web mock"
@@ -71,7 +71,7 @@ export default function Page() {
                     sizes="(max-width: 1024px) 70vw, 40vw"
                   />
                 </div>
-                <div className="absolute left-0 top-12 h-[220px] w-[220px] overflow-hidden rounded-2xl bg-[#d3a21a]">
+                <div className="absolute left-0 top-10 z-10 h-[200px] w-[220px] overflow-hidden rounded-[28px] bg-[#d3a21a] shadow-[0_28px_50px_rgba(0,0,0,0.22)] sm:top-14 sm:h-[230px] sm:w-[250px] md:top-16 md:h-[290px] md:w-[320px]">
                   <Image
                     src="/portafolio/alkimia-diseno-de-empaque-acento-cafeteria.webp"
                     alt="Acento Cafe"

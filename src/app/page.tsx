@@ -21,7 +21,7 @@ export default function HomePage() {
         </div>
         <IntroSplit />
         <StatsStrip />
-        <PortfolioPreview />
+        {/* <PortfolioPreview /> */}
         <PortafolioDos />
         <BrandManifesto />
       </main>
