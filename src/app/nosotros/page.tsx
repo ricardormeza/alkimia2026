@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FaDraft2Digital } from "react-icons/fa";
 import { ImMagicWand } from "react-icons/im";
@@ -99,7 +99,7 @@ export default function Page() {
     },
   };
 
-  const cardFadeUp = {
+  const cardFadeUp: Variants = {
     hidden: { opacity: 0, y: 18 },
     show: {
       opacity: 1,

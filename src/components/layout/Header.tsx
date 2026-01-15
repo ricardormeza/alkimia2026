@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CiPhone } from "react-icons/ci";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
@@ -121,21 +121,21 @@ export default function Header({ active = "inicio", variant = "dark" }: HeaderPr
   const navBase =
     "relative border-b-2 pb-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-200 hover:after:scale-x-100";
 
-  const mobileOverlay = {
+  const mobileOverlay: Variants = {
     hidden: { scaleY: 0, transformOrigin: "top" },
     show: {
       scaleY: 1,
       transformOrigin: "top",
-      transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.45, ease: "easeOut" },
     },
     exit: {
       scaleY: 0,
       transformOrigin: "top",
-      transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.35, ease: "easeOut" },
     },
   };
 
-  const mobileNav = {
+  const mobileNav: Variants = {
     hidden: {},
     show: {
       transition: {
@@ -145,12 +145,12 @@ export default function Header({ active = "inicio", variant = "dark" }: HeaderPr
     },
   };
 
-  const mobileItem = {
+  const mobileItem: Variants = {
     hidden: { opacity: 0, y: 8 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.4, ease: "easeOut" },
     },
   };
 
