@@ -27,12 +27,11 @@ export default function Page() {
                 <h1 className="mt-4 text-3xl font-semibold leading-tight text-black sm:text-4xl">
                   JBLAS Asesores
                 </h1>
+                <p className="mt-4 text-sm leading-relaxed text-black/70">Año: 2024</p>
                 <p className="mt-4 text-sm leading-relaxed text-black/70">
-                  TODO: copy
+                  Desarrollamos una nueva identidad para Jblas que reflejara la trayectoria, la visión y profesionalismo de la empresa. El proyecto incluye desde el rediseño de logotipo y su imagen corporativa hasta el rediseño y desarrollo de su pagina web.
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-black/70">
-                  TODO: copy
-                </p>
+                
                 <div className="mt-6 flex items-center gap-3">
                   <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-black/15 text-xs text-black/60">
                     Fb

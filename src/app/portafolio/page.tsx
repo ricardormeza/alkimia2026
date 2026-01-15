@@ -36,23 +36,33 @@ const portfolioItems = [
 
   {
     src: "/portafolio/imagen-corporativa-alkimia-marketing.webp",
-    alt: "Imagen Corporativa",
+    alt: "ABBaja",
+    href: "/portafolio/abbaja",
+    cta: "Ver proyecto",
   },
   {
     src: "/portafolio/alkimia-publicidad-branding-sinley-img6.webp",
-    alt: "Sinley Branding",
+    alt: "Sinley",
+    href: "/portafolio/sinley",
+    cta: "Ver proyecto",
   },
   {
-    src: "/portafolio/alkimia-marketing-grupo-valcas-cobroplan1.webp",
-    alt: "Grupo Valcas",
+    src: "/portafolio/alkimia-publicidad-proyecto-sophia-grupo-cosmopolitan-valla-perimetral-1.webp",
+    alt: "Cosmo Sophia",
+    href: "/portafolio/cosmo-sophia",
+    cta: "Ver proyecto",
   },
   {
-    src: "/portafolio/alkimia-publicidad-branding-sinley-img6.webp",
-    alt: "Sinley Branding",
+    src: "/portafolio/alkimia-marketing-redes-sociales-amet-2-scaled.webp",
+    alt: "AmetBaja",
+    href: "/portafolio/ametbaja",
+    cta: "Ver proyecto",
   },
   {
-    src: "/portafolio/web-mock-jblas-scaled.webp",
-    alt: "Web JBLAS",
+    src: "/portafolio/alkimia-marketing-digital-branding-vitalate-medica-7.webp",
+    alt: "Vitálate",
+    href: "/portafolio/vitalate",
+    cta: "Ver proyecto",
   },
 ];
 

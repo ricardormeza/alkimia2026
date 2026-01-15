@@ -24,14 +24,13 @@ export default function Page() {
                   Branding / Web
                 </p>
                 <h1 className="mt-4 text-3xl font-semibold leading-tight text-black sm:text-4xl">
-                  Mu\u00f1oz Realty Group
+                  Muñoz Realty Group
                 </h1>
+                <p className="mt-4 text-sm leading-relaxed text-black/70">Año: 2022</p>
                 <p className="mt-4 text-sm leading-relaxed text-black/70">
-                  TODO: copy
+                  Diseñamos la identidad de marca de Muñoz Realty Group, un destacado grupo inmobiliario especializado en la venta de propiedades de lujo en <span>Tijuana</span> y <span>San Diego</span>. El principal desafío fue crear una imagen que transmitiera consistencia, profesionalismo, solidez y elegancia. Como parte del proyecto, también desarrollamos su sitio web, asegurando una presencia digital que refleja su prestigio y calidad en el mercado.
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-black/70">
-                  TODO: copy
-                </p>
+                
                 <div className="mt-6 flex items-center gap-3">
                   <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-black/15 text-xs text-black/60">
                     Fb

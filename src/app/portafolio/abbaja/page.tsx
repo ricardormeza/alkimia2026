@@ -5,9 +5,9 @@ import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 
 const galleryImages = [
-  "/portafolio/grupo-valcas/alkimia-marketing-grupo-valcas-cobroplan1.webp",
-  "/portafolio/grupo-valcas/alkimia-marketing-grupo-valcas-cobroplan1 (1).webp",
-  "/portafolio/grupo-valcas/alkimia-marketing-grupo-valcas-cobroplan2-1536x1024.webp",
+  "/portafolio/abbaja/Instagram-Post-and-Stories-abbaja-1536x1024.webp",
+  "/portafolio/abbaja/Instagram-Post-and-Stories-abbaja-scaled.webp",
+ 
 ];
 
 export default function Page() {
@@ -20,15 +20,17 @@ export default function Page() {
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)]">
               <div className="lg:sticky lg:top-24 lg:self-start">
                 <p className="text-xs uppercase tracking-[0.4em] text-black/50">
-                  Marketing Digital
+                  Branding / Web
                 </p>
                 <h1 className="mt-4 text-3xl font-semibold leading-tight text-black sm:text-4xl">
-                  Grupo Valcas
+                  ABbaja
                 </h1>
                 <p className="mt-4 text-sm leading-relaxed text-black/70">
-                  Diseñamos la identidad visual de Cobroplan, la innovadora plataforma de pagos inmobiliarios de Grupo Valcas. Nuestro enfoque se centró en crear una experiencia intuitiva y eficiente, permitiendo a los usuarios realizar pagos en línea y consultar sus estados de cuenta de manera sencilla y cómoda.
+                  TODO: copy
                 </p>
-                
+                <p className="mt-4 text-sm leading-relaxed text-black/70">
+                  TODO: copy
+                </p>
                 <div className="mt-6 flex items-center gap-3">
                   <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-black/15 text-xs text-black/60">
                     Fb
@@ -49,7 +51,7 @@ export default function Page() {
                   >
                     <Image
                       src={src}
-                      alt="Grupo Valcas"
+                      alt="JBLAS Asesores"
                       fill
                       className="object-cover"
                       sizes="(max-width: 1024px) 90vw, 40vw"

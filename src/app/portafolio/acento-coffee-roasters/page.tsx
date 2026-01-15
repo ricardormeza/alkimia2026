@@ -27,6 +27,7 @@ export default function Page() {
                 <h1 className="mt-4 text-3xl font-semibold leading-tight text-black sm:text-4xl">
                   Café con acento propio
                 </h1>
+                <p className="mt-4 text-sm leading-relaxed text-black/70">Año: 2024</p>
                 <p className="mt-4 text-sm leading-relaxed text-black/70">
                   En este proyecto, asumimos el desafío de rediseñar la imagen de empaque para Acento Coffee Roasters. Nuestro objetivo fue dotar a la marca de una estética fresca y contemporánea que no solo conectara con sus clientes, sino que también reflejara la calidad excepcional de sus bebidas. Todo esto sin perder de vista su esencia y raíces auténticas, profundamente ligadas a la ciudad.
                 </p>
