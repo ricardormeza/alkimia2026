@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CiPhone } from "react-icons/ci";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
@@ -28,9 +29,45 @@ const serviceItems = [
   { href: "/contacto", label: "Solicitar una cotizaci\u00f3n" },
 ];
 
+const searchItems = [
+  { href: "/", label: "Inicio", keywords: ["inicio", "home"] },
+  { href: "/nosotros", label: "Nosotros", keywords: ["nosotros", "equipo"] },
+  { href: "/servicios", label: "Servicios", keywords: ["servicios", "service"] },
+  { href: "/branding", label: "Branding", keywords: ["branding", "marca"] },
+  {
+    href: "/servicio-de-diseno-grafico",
+    label: "Diseno Grafico",
+    keywords: ["diseno", "grafico", "diseno grafico"],
+  },
+  {
+    href: "/diseno-de-paginas-web",
+    label: "Paginas Web",
+    keywords: ["paginas web", "web", "sitio"],
+  },
+  {
+    href: "/marketing-digital",
+    label: "Marketing Digital",
+    keywords: ["marketing", "digital", "seo"],
+  },
+  { href: "/portafolio", label: "Portafolio", keywords: ["portafolio", "proyectos"] },
+  { href: "/contacto", label: "Contacto", keywords: ["contacto", "contactar"] },
+  { href: "/portafolio/jblas-asesores", label: "JBLAS Asesores", keywords: ["jblas"] },
+  { href: "/portafolio/grupo-valcas", label: "Grupo Valcas", keywords: ["valcas"] },
+  { href: "/portafolio/munoz-realty-group", label: "Munoz Realty Group", keywords: ["munoz"] },
+  { href: "/portafolio/abbaja", label: "ABBaja", keywords: ["abbaja"] },
+  { href: "/portafolio/sinley", label: "Sinley", keywords: ["sinley"] },
+  { href: "/portafolio/cosmo-sophia", label: "Cosmo Sophia", keywords: ["cosmo", "sophia"] },
+  { href: "/portafolio/ametbaja", label: "Ametbaja", keywords: ["ametbaja"] },
+  { href: "/portafolio/vitalate", label: "Vitalate", keywords: ["vitalate"] },
+];
+
 export default function Header({ active = "inicio", variant = "dark" }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
   const isLight = variant === "light";
   const serviceMenuItems = serviceItems.filter((item) => item.href !== "/contacto");
 
@@ -60,6 +97,26 @@ export default function Header({ active = "inicio", variant = "dark" }: HeaderPr
       setIsServicesOpen(false);
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (isSearchOpen) {
+      setSearchQuery("");
+      requestAnimationFrame(() => {
+        searchInputRef.current?.focus();
+      });
+    }
+  }, [isSearchOpen]);
+
+  const searchResults = useMemo(() => {
+    const term = searchQuery.trim().toLowerCase();
+    if (!term) {
+      return searchItems;
+    }
+    return searchItems.filter((item) => {
+      const haystack = `${item.label} ${item.keywords?.join(" ") ?? ""}`.toLowerCase();
+      return haystack.includes(term);
+    });
+  }, [searchQuery]);
 
   const navBase =
     "relative border-b-2 pb-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-200 hover:after:scale-x-100";
@@ -197,6 +254,7 @@ export default function Header({ active = "inicio", variant = "dark" }: HeaderPr
               type="button"
               className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2562f4] ${iconBorder} ${iconText}`}
               aria-label="Buscar"
+              onClick={() => setIsSearchOpen(true)}
             >
               <svg
                 viewBox="0 0 24 24"
@@ -416,6 +474,93 @@ export default function Header({ active = "inicio", variant = "dark" }: HeaderPr
             </motion.div>
           ) : null}
         </AnimatePresence>
+        {isSearchOpen ? (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+            role="dialog"
+            aria-modal="true"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) {
+                setIsSearchOpen(false);
+              }
+            }}
+          >
+            <div
+              className={`w-full max-w-lg rounded-2xl border p-4 shadow-xl ${dropdownBorder} ${dropdownBg}`}
+            >
+              <div className="flex items-center gap-3">
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Escape") {
+                      setIsSearchOpen(false);
+                    }
+                    if (event.key === "Enter" && searchResults[0]) {
+                      router.push(searchResults[0].href);
+                      setIsSearchOpen(false);
+                    }
+                  }}
+                  placeholder="Buscar..."
+                  className={`w-full rounded-full border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2562f4] ${dropdownBorder} ${dropdownText} ${dropdownBg}`}
+                />
+                <button
+                  type="button"
+                  className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2562f4] ${iconBorder} ${iconText}`}
+                  aria-label="Cerrar busqueda"
+                  onClick={() => setIsSearchOpen(false)}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6L6 18" />
+                    <path d="M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div className="mt-4 max-h-64 overflow-auto">
+                {searchResults.length ? (
+                  <ul className={`space-y-1 text-sm ${dropdownText}`}>
+                    {searchResults.map((item) => (
+                      <li key={item.href}>
+                        <button
+                          type="button"
+                          className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left transition-colors duration-200 ${dropdownHover}`}
+                          onClick={() => {
+                            router.push(item.href);
+                            setIsSearchOpen(false);
+                          }}
+                        >
+                          <span>{item.label}</span>
+                          <span
+                            className={`text-xs ${
+                              isLight ? "text-black/40" : "text-white/50"
+                            }`}
+                          >
+                            {item.href}
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className={`text-sm ${isLight ? "text-black/50" : "text-white/50"}`}>
+                    Sin resultados.
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        ) : null}
       </div>
     </header>
   );
