@@ -89,11 +89,13 @@ export default function Page() {
 
         <Section className="pt-6">
           <Container>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid auto-rows-[200px] gap-4 sm:auto-rows-[220px] lg:grid-cols-2 lg:auto-rows-[240px]">
               {portfolioItems.map((item, index) => {
                 const col = index % 3;
                 const row = Math.floor(index / 3);
                 const delay = row * 0.08 + col * 0.06;
+                const layoutClass =
+                  index === 0 ? "lg:row-span-2" : "lg:row-span-1 lg:col-start-2";
                 const content = (
                   <>
                     <Image
@@ -114,7 +116,7 @@ export default function Page() {
                 return (
                   <motion.div
                     key={`${item.src}-${index}`}
-                    className="group relative aspect-square overflow-hidden rounded-2xl border border-black/10"
+                    className={`group relative overflow-hidden rounded-2xl border border-black/10 ${layoutClass}`}
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}

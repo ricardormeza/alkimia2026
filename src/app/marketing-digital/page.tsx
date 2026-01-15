@@ -94,13 +94,13 @@ export default function Page() {
                   Solicitar cotización
                 </button>
               </div>
-              <div className="relative overflow-hidden rounded-2xl border border-black/10 bg-[#e7e0d6]">
+              <div className="relative overflow-hidden rounded-2xl border border-black/10 bg-[#e7e0d6] lg:h-[540px]">
                 <Image
                   src="/portafolio/alkimia-publicidad-branding-sinley-img6.webp"
                   alt="Marketing digital"
                   width={960}
                   height={640}
-                  className="h-auto w-full object-cover"
+                  className="h-full w-full object-cover"
                   priority
                 />
               </div>
@@ -110,11 +110,20 @@ export default function Page() {
 
         <Section className="pt-6">
           <Container>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid auto-rows-[180px] gap-4 sm:auto-rows-[200px] lg:grid-cols-12 lg:auto-rows-[220px]">
               {portfolioItems.map((item, index) => {
                 const col = index % 3;
                 const row = Math.floor(index / 3);
                 const delay = row * 0.08 + col * 0.06;
+                const layoutClass = [
+                  "lg:col-span-6", // 0 - wide
+                  "lg:col-span-3", // 1 - narrow
+                  "lg:col-span-3", // 2 - narrow
+                  "lg:col-span-4", // 3 - equal
+                  "lg:col-span-4", // 4 - equal
+                  "lg:col-span-4", // 5 - equal
+                  "lg:col-span-12", // 6 - full width
+                ][index] ?? "lg:col-span-4";
                 const content = (
                   <>
                     <Image
@@ -135,7 +144,7 @@ export default function Page() {
                 return (
                   <motion.div
                     key={`${item.src}-${index}`}
-                    className="group relative aspect-square overflow-hidden rounded-2xl border border-black/10"
+                    className={`group relative overflow-hidden rounded-2xl border border-black/10 ${layoutClass}`}
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
