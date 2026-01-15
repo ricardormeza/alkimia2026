@@ -8,9 +8,9 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#0b0b0b]">
       <Container className="py-12">
-        <div className="grid gap-10 text-sm text-white/70 md:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-4">
-            <Link href="/" className="inline-flex items-center">
+        <div className="grid gap-10 text-sm text-white/70 grid-cols-2 lg:grid-cols-4">
+          <div className="col-span-2 space-y-4 lg:col-span-1">
+            <Link href="/" className="inline-flex items-center justify-center lg:justify-start">
               <Image
                 src="/images/Alkimia-logo-blanco.webp"
                 alt="Alkimia"
@@ -22,7 +22,7 @@ export default function Footer() {
             </Link>
             
           </div>
-          <div className="space-y-3">
+          <div className="space-y-3 lg:col-span-1">
             <p className="text-white">Office</p>
             <div className="space-y-2">
               <p>Tijuana, B.C., México</p>
@@ -40,7 +40,7 @@ export default function Footer() {
                   </a>
             </div>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-3 lg:col-span-1">
             <p className="text-white">Links</p>
             <div className="flex flex-col gap-2">
               <Link href="/" className="hover:text-white">
@@ -60,7 +60,7 @@ export default function Footer() {
               </Link>
             </div>
           </div>
-          <div className="space-y-4">
+          <div className="col-span-2 space-y-4 lg:col-span-1">
             <p className="text-white">Newsletter</p>
             <form className="space-y-3">
               <label className="sr-only" htmlFor="footer-email">
